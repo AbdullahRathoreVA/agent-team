@@ -1,0 +1,10 @@
+{
+  "goal": "Add a pricing page that lists three cake sizes (small 20, medium 35, large 50) and link it from the home page.",
+  "steps": [
+    {"id": "copy", "role": "writer", "task": "Write the pricing page text for the three sizes.", "needs": [], "model": "balanced", "verify": "All three sizes and prices appear exactly once."},
+    {"id": "find-nav", "role": "researcher", "task": "Find where the home page navigation is defined.", "needs": [], "model": "fast", "verify": "Names the file and line of the nav links."},
+    {"id": "page", "role": "developer", "task": "Build pricing.html from the copy, in the site's existing style.", "needs": ["copy"], "model": "balanced", "verify": "The page renders and shows the three prices."},
+    {"id": "link", "role": "developer", "task": "Add a Pricing link to the home page navigation.", "needs": ["find-nav", "page"], "model": "fast", "verify": "Clicking Pricing on the home page opens pricing.html."},
+    {"id": "review", "role": "reviewer", "task": "Check the whole change against the goal.", "needs": ["copy", "page", "link"], "model": "deep", "verify": "Every part of the goal is met and nothing else changed."}
+  ]
+}
